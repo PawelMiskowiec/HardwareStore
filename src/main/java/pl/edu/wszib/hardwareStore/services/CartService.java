@@ -20,8 +20,11 @@ public class CartService {
 
     public void addProduct(Long productId){
         Optional<Product> product = database.getProductById(productId);
+
         if(checkIfPresentInCart(productId)){
-            addQuantityIfPresentInCart(productId);
+            if(sessionObject.getCart().getOrderPositionByProductId(productId).getQuantity() + 1 <= database.getProductQuantityById(productId)){
+                addProductQuantity(productId);
+            }
         } else{
             addProductToCart(product, 1);
         }
@@ -33,7 +36,7 @@ public class CartService {
                 .anyMatch(orderPosition -> orderPosition.getProduct().getId().equals(productId));
     }
 
-    private void addQuantityIfPresentInCart(Long productId){
+    private void addProductQuantity(Long productId){
         sessionObject.getCart().getOrderPositions()
                 .stream()
                 .filter(orderPosition -> orderPosition.getProduct().getId().equals(productId))

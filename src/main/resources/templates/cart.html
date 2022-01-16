@@ -4,29 +4,61 @@
     <meta charset="UTF-8">
     <title>Hatkor Sklep</title>
     <link rel="stylesheet" href="main.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
 </head>
 <body>
-<div id="logo"><img src="logo.png"></div>
+<div id="logo" class="container"> <a href="/main"><img src="logo.png"></a></div>
 
-<div id="menu">
-    <a href="/main">Strona główna</a>
-    <a href="/contact">Kontakt</a>
-    <a th:if="${logged == true}" href="/cart">Koszyk</a>
-    <a th:if="${logged == true}" href="/orders">Moje zamówienia</a>
-    <a th:if="${logged == false}" href="/login">Zaloguj się</a>
-    <a th:if="${logged == false}" href="/signup">Zarejestruj się</a>
-    <a th:if="${logged == true}" href="/logout">Wyloguj</a>
-</div>
-
-<div id="content">
-    <div th:each="orderPosition : ${cart.orderPositions}" class="product">
-        <div th:text="${orderPosition.product.name}" class="name"></div>
-        <div th:text="${orderPosition.product.brand}" class="brand"></div>
-        <div th:text="'Sztuk: ' + ${orderPosition.quantity}" class="quantity"></div>
-        <div th:text="'Cena: ' + ${orderPosition.product.price}" class="price"></div>
+<div id="menu" class="container">
+    <div class="row">
+        <div class="column">
+            <a href="/main" class="button float-left">Strona główna</a>
+            <a th:if="${logged == true}" href="/cart" class="button button-outline float-left">Koszyk</a>
+            <a th:if="${logged == true}" href="/orders" class="button button-outline float-left">Moje zamówienia</a>
+            <a th:if="${logged == true}" href="/logout" class="button button-outline float-right">Wyloguj się</a>
+        </div>
     </div>
-    <div>Suma: <a th:text="${sum}"></a></div>
-    <div><a href="cart/confirmOrder">Dodaj zamowienie</a></div>
+</div>
+<br><br><br><br>
+
+<div id="content" class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Marka</th>
+                <th>Ilosc</th>
+                <th>Cena</th>
+            </tr>
+        </thead>
+        <tbody>
+            <div th:each="orderPosition : ${cart.orderPositions}" class="product">
+            <tr>
+                <td> <div th:text="${orderPosition.product.name}" class="name"></div></td>
+                <td> <div th:text="${orderPosition.product.brand}" class="brand"></div></td>
+                <td> <div th:text="${orderPosition.quantity}" class="quantity"></div></td>
+                <td> <div th:text=" ${orderPosition.product.price} + ' zł'" class="price"></div></td>
+            </tr>
+            </div>
+        </tbody>
+    </table>
+
+    <div>Suma: <a th:text="${sum} + ' zł'"></a></div>
+    <div><a href="cart/confirmOrder" class="button">Dodaj zamowienie</a></div>
+
+    <footer class="contact">
+        <div class="container">
+            <a href="/contact" class="button button-outline">Kontakt</a>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

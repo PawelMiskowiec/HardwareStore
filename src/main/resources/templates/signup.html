@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Hatkor Sklep</title>
+    <link rel="stylesheet" href="main.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
 </head>
 <body>
-<div id="menu">
-    <a href="/main">Strona główna</a>
-    <a href="/contact">Kontakt</a>
-</div>
-<form method="post">
-    <input type="text" placeholder="Login" name="login">
-    <input type="password" placeholder="Haslo" name="password">
-    <input type="submit" value="Create Account">
-</form>
+    <div id="logo" class="container"> <a href="/main"><img src="logo.png"></a></div>
+
+    <div id="menu" class="container">
+        <div class="row">
+            <div class="column">
+                <a href="/main" class="button float-left">Strona główna</a>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+
+    <div class="container">
+        <form method="post">
+            <input type="text" placeholder="Login" name="login">
+            <input type="password" placeholder="Haslo" name="password">
+            <br>
+            <input type="submit" value="Create Account">
+        </form>
+    </div>
+
+    <footer class="contact">
+        <div class="container">
+            <a href="/contact" class="button button-outline">Kontakt</a>
+        </div>
+    </footer>
 </body>
 </html>

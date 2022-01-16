@@ -2,6 +2,7 @@ package pl.edu.wszib.hardwareStore.database;
 
 import lombok.Data;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Component;
 import pl.edu.wszib.hardwareStore.model.*;
 
@@ -74,7 +75,15 @@ public class DB {
                 .stream()
                 .filter(product -> product.getId().equals(id))
                 .findFirst();
+    }
 
+    public int getProductQuantityById(Long id){
+        return products
+                .stream()
+                .filter(product -> product.getId().equals(id))
+                .findFirst()
+                .get()
+                .getQuantity();
     }
 
     public Optional<User> addUser(String login, String password) {

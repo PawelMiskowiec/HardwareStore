@@ -21,4 +21,12 @@ public class Cart {
     public void addOrderPosition(Product product, int quantity) {
         orderPositions.add(new OrderPosition(product, quantity));
     }
+
+    public OrderPosition getOrderPositionByProductId(Long productId){
+        return orderPositions
+                .stream()
+                .filter(orderPosition -> orderPosition.getProduct().getId().equals(productId))
+                .findFirst()
+                .get();
+    }
 }

@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <title>Hatkor Sklep</title>
     <link rel="stylesheet" href="main.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
 </head>
 <body>
-<div id="logo"><img src="logo.png"></div>
+<div id="logo" class="container"> <a href="/main"><img src="logo.png"></a></div>
 
-<div id="menu">
-    <a href="/main">Strona główna</a>
-    <a href="/contact">Kontakt</a>
-    <a th:if="${logged == true}" href="/cart">Koszyk</a>
-    <a th:if="${logged == true}" href="/orders">Moje zamówienia</a>
-    <a th:if="${logged == false}" href="/login">Zaloguj się</a>
-    <a th:if="${logged == false}" href="/signup">Zarejestruj się</a>
-    <a th:if="${logged == true}" href="/logout">Wyloguj</a>
+<div id="menu" class="container">
+    <div class="row">
+        <div class="column">
+            <a href="/main" class="button float-left">Strona główna</a>
+            <a th:if="${logged == true}" href="/cart" class="button button-outline float-left">Koszyk</a>
+            <a th:if="${logged == true}" href="/orders" class="button button-outline float-left">Moje zamówienia</a>
+            <a th:if="${logged == false}" href="/login" class="button float-right">Zaloguj się</a>
+            <a th:if="${logged == false}" href="/signup" class="button button-outline float-right">Zarejestruj się</a>
+            <a th:if="${logged == true}" href="/logout" class="button button-outline float-right">Wyloguj się</a>
+        </div>
+    </div>
 </div>
-
-<div id="content">
-    <div class="contact-left">
-        Area 51,
-        Nevada,
-        +420 213769
+<br>
+<div id="content" class="container">
+    <div class="container">
+        <h4>
+            Area 51<br>
+            Nevada<br>
+            +48 666555444
+        </h4>
     </div>
-    <div class="contact-right">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60022.431343359145!2d-115.8171266544632!3d37.244276045820236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80b81baaba3e8c81%3A0x970427e38e6237ae!2sStrefa%2051%2C%20Nevada%2C%20Stany%20Zjednoczone!5e1!3m2!1spl!2spl!4v1642277775709!5m2!1spl!2spl" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60022.431343359145!2d-115.8171266544632!3d37.244276045820236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80b81baaba3e8c81%3A0x970427e38e6237ae!2sStrefa%2051%2C%20Nevada%2C%20Stany%20Zjednoczone!5e1!3m2!1spl!2spl!4v1642277775709!5m2!1spl!2spl" width="800vw" height="600hw" style="border:0;" allowfullscreen="" loading="lazy"></iframe><br><br><br><br>
 </div>
 </body>
 </html>

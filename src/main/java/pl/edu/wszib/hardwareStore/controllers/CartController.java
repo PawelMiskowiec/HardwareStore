@@ -38,7 +38,9 @@ public class CartController {
 
     @GetMapping(value = "/confirmOrder")
     public String confirmOrder(){
-        orderService.addOrder();
+        if(!sessionObject.getCart().getOrderPositions().isEmpty()){
+            orderService.addOrder();
+        }
         return "redirect:/orders";
     }
 

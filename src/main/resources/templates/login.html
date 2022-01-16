@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Hatkor Sklep</title>
+    <link rel="stylesheet" href="/main.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
 </head>
 <body>
-<div id="menu">
-    <a href="/main">Strona główna</a>
-    <a href="/contact">Kontakt</a>
-</div>
+    <main class="main">
+        <div id="logo" class="container"> <a href="/main"><img src="logo.png"></a></div>
 
-<form method="post">
-    <label for="login">Login</label>
-    <input type="text" id="login" name="login">
+        <div id="menu" class="container">
+            <div class="row">
+                <div class="column">
+                    <a href="/main" class="button float-left">Strona główna</a>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password">
+        <div class="container">
+            <form method="post" >
+                <label for="login">Login</label>
+                <input type="text" id="login" name="login">
 
-    <input type="submit" value="login">
-</form>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <br>
+                <input type="submit" value="login">
+            </form>
+        </div>
+    </main>
+    <footer class="contact">
+        <div class="container">
+            <a href="/contact" class="button button-outline">Kontakt</a>
+        </div>
+    </footer>
 </body>
 </html>
