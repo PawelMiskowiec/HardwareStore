@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hatkor Sklep</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div id="logo"><img src="logo.png"></div>
+
+<div id="menu">
+    <a href="/main">Strona główna</a>
+    <a href="/contact">Kontakt</a>
+    <a th:if="${logged == true}" href="/cart">Koszyk</a>
+    <a th:if="${logged == true}" href="/orders">Moje zamówienia</a>
+    <a th:if="${logged == false}" href="/login">Zaloguj się</a>
+    <a th:if="${logged == false}" href="/signup">Zarejestruj się</a>
+    <a th:if="${logged == true}" href="/logout">Wyloguj</a>
+</div>
+
+<div id="content">
+    <div class="contact-left">
+        Area 51,
+        Nevada,
+        +420 213769
+    </div>
+    <div class="contact-right">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60022.431343359145!2d-115.8171266544632!3d37.244276045820236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80b81baaba3e8c81%3A0x970427e38e6237ae!2sStrefa%2051%2C%20Nevada%2C%20Stany%20Zjednoczone!5e1!3m2!1spl!2spl!4v1642277775709!5m2!1spl!2spl" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+</body>
+</html>

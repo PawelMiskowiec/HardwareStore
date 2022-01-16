@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hatkor Sklep</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div id="logo"><img src="logo.png"></div>
+
+    <div id="menu">
+        <a href="/main" style="font-weight: bold">Strona główna</a>
+        <a href="/contact">Kontakt</a>
+        <a th:if="${logged == true}" href="/cart">Koszyk</a>
+        <a th:if="${logged == true}" href="/orders">Moje zamówienia</a>
+        <a th:if="${logged == false}" href="/login">Zaloguj się</a>
+        <a th:if="${logged == false}" href="/signup">Zarejestruj się</a>
+        <a th:if="${logged == true}" href="/logout">Wyloguj się</a>
+    </div>
+
+    <div id="content">
+        <div th:each="product : ${products}" class="product">
+            <div th:text="${product.name}" class="name"></div>
+            <div th:text="${product.brand}" class="brand"></div>
+            <div th:text="'Cena: ' + ${product.price}" class="price"></div>
+            <div th:text="'Sztuk: ' + ${product.quantity}" class="quantity"></div>
+            <a th:if="${logged == true}" th:href="@{/cart/add/{id}(id=${product.id})}">Do koszyka</a>
+        </div>
+    </div>
+
+</body>
+</html>
