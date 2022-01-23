@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.edu.wszib.hardwareStore.database.DB;
+import pl.edu.wszib.hardwareStore.services.IProductService;
 import pl.edu.wszib.hardwareStore.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -14,7 +15,7 @@ import javax.annotation.Resource;
 @Controller
 @AllArgsConstructor
 public class CommonController {
-    DB database;
+    IProductService productService;
 
     @Resource
     SessionObject sessionObject;
@@ -26,7 +27,7 @@ public class CommonController {
 
     @GetMapping(value = "/main")
     public String main(Model model){
-        model.addAttribute("products", this.database.getProducts());
+        model.addAttribute("products", this.productService.getAllProducts());
         model.addAttribute("logged", this.sessionObject.isLogged());
         return "main";
     }

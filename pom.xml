@@ -16,11 +16,24 @@
 
     <properties>
         <lombok.version>1.18.22</lombok.version>
-        <commons.codec>1.15</commons.codec>
-        <springdoc.openapi.ui>1.5.12</springdoc.openapi.ui>
+        <commons.codec.version>1.15</commons.codec.version>
+        <springdoc.openapi.ui.version>1.5.12</springdoc.openapi.ui.version>
+        <mysql.connector.java.version>8.0.27</mysql.connector.java.version>
+        <hibernate.core.version>5.6.3.Final</hibernate.core.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.java.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.core.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -30,7 +43,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.openapi.ui}</version>
+            <version>${springdoc.openapi.ui.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
         <dependency>
@@ -46,7 +59,7 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>${commons.codec}</version>
+            <version>${commons.codec.version}</version>
         </dependency>
     </dependencies>
 

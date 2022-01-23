@@ -95,22 +95,22 @@ public class DB {
         return Optional.empty();
     }
 
-    public void addOrder(Cart cart, String login) {
-        Order order = new Order();
+//    public void addOrder(Cart cart, String login) {
+//        Order order = new Order();
+//
+//        order.setOrderId(nextOrderID());
+//        order.setLogin(login);
+//        cart.getOrderPositions().forEach(order::addOrderPosition);
+//
+//        orders.add(order);
+//    }
 
-        order.setOrderId(nextOrderID());
-        order.setLogin(login);
-        cart.getOrderPositions().forEach(order::addOrderPosition);
-
-        orders.add(order);
-    }
-
-    public List<Order> getOrders(String login) {
-        return orders
-                .stream()
-                .filter(order -> order.getLogin().equals(login))
-                .toList();
-    }
+//    public List<Order> getOrders(String login) {
+//        return orders
+//                .stream()
+//                .filter(order -> order.getLogin().equals(login))
+//                .toList();
+//    }
 
 
     public void decreaseQuantity(Long productId, int quantity) {
