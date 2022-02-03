@@ -1,9 +1,7 @@
 package pl.edu.wszib.hardwareStore.services.impl;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import pl.edu.wszib.hardwareStore.database.DB;
 import pl.edu.wszib.hardwareStore.database.IProductDAO;
 import pl.edu.wszib.hardwareStore.model.Cart;
 import pl.edu.wszib.hardwareStore.model.Product;
@@ -22,11 +20,11 @@ public class CartService implements ICartService{
     SessionObject sessionObject;
 
     public void addProduct(Long productId){
-        Optional<Product> product = productDAO.getProductById(productId);
+        Optional<Product> product = productDAO.getById(productId);
 
         if(checkIfPresentInCart(productId)){
             if(sessionObject.getCart().getOrderPositionByProductId(productId).getQuantity() + 1
-                    <= productDAO.getProductById(productId).get().getQuantity()){
+                    <= productDAO.getById(productId).get().getQuantity()){
                 addProductQuantity(productId);
             }
         } else{
@@ -50,8 +48,8 @@ public class CartService implements ICartService{
 
     private void addProductToCart(Optional<Product> product, int quantity){
         if(product.isPresent()
-                && productDAO.getProductById(product.get().getId()).isPresent()
-                && productDAO.getProductById(product.get().getId()).get().getQuantity()>=quantity){
+                && productDAO.getById(product.get().getId()).isPresent()
+                && productDAO.getById(product.get().getId()).get().getQuantity()>=quantity){
             product.ifPresent(value -> sessionObject.getCart().addOrderPosition(value, quantity));
         }
 

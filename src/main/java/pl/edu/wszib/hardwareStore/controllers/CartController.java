@@ -16,8 +16,8 @@ import javax.annotation.Resource;
 @Controller
 @AllArgsConstructor
 public class CartController {
-    CartService cartService;
-    OrderService orderService;
+    private final CartService cartService;
+    private final OrderService orderService;
 
     @Resource
     SessionObject sessionObject;
@@ -34,14 +34,6 @@ public class CartController {
     public String addProductToCard(@PathVariable Long productId){
         cartService.addProduct(productId);
         return "redirect:/main";
-    }
-
-    @GetMapping(value = "/confirmOrder")
-    public String confirmOrder(){
-        if(!sessionObject.getCart().getOrderPositions().isEmpty()){
-            orderService.addOrder();
-        }
-        return "redirect:/orders";
     }
 
 }

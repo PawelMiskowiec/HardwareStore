@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 @Controller
 @AllArgsConstructor
 public class OrderController {
-    OrderService orderService;
+    private final OrderService orderService;
 
     @Resource
     SessionObject sessionObject;
@@ -24,6 +24,14 @@ public class OrderController {
         model.addAttribute("orders", this.orderService.getOrders());
         model.addAttribute("logged", this.sessionObject.isLogged());
         return "orders";
+    }
+
+    @GetMapping(value = "/confirmOrder")
+    public String confirmOrder(){
+        if(!sessionObject.getCart().getOrderPositions().isEmpty()){
+            orderService.addOrder();
+        }
+        return "redirect:/orders";
     }
 
 }

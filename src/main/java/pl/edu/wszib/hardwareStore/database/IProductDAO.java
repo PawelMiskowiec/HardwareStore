@@ -7,6 +7,9 @@ import java.util.Optional;
 
 public interface IProductDAO {
     List<Product> getProducts();
-    Optional<Product> getProductById(Long id);
+    Optional<Product> getById(Long id);
+    List<Product> getByCategory(String category);
     void updateProduct(Product product);
+    void addProduct(Product product);
+    void deleteById(Product product);
 }

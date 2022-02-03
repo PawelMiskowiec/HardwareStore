@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 @AllArgsConstructor
 public class AuthenticationController {
 
-    AuthenticationService authenticationService;
+    private final AuthenticationService authenticationService;
 
     @Resource
     SessionObject sessionObject;

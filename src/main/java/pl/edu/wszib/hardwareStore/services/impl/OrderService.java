@@ -48,7 +48,7 @@ public class OrderService implements IOrderService{
 
     private void DecreaseProductsQuantity() {
         sessionObject.getCart().getOrderPositions().forEach(orderPosition ->{
-            Optional<Product> productBox = productDAO.getProductById(orderPosition.getProduct().getId());
+            Optional<Product> productBox = productDAO.getById(orderPosition.getProduct().getId());
             if(productBox.isPresent()){
                 productBox.get().setQuantity(productBox.get().getQuantity() - orderPosition.getQuantity());
                 productDAO.updateProduct(productBox.get());

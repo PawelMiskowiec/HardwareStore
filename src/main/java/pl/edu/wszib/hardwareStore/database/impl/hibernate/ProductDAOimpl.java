@@ -28,7 +28,7 @@ public class ProductDAOimpl implements IProductDAO {
     }
 
     @Override
-    public Optional<Product> getProductById(Long id) {
+    public Optional<Product> getById(Long id) {
         Session session = this.sessionFactory.openSession();
         Query<Product> query = session.createQuery("FROM pl.edu.wszib.hardwareStore.model.Product WHERE id = :id");
         query.setParameter("id", id);
@@ -43,6 +43,16 @@ public class ProductDAOimpl implements IProductDAO {
     }
 
     @Override
+    public List<Product> getByCategory(String category) {
+        Session session = this.sessionFactory.openSession();
+        Query<Product> query = session.createQuery("FROM pl.edu.wszib.hardwareStore.model.Product WHERE lower(:category) like lower(category)");
+        query.setParameter("category", category);
+        List<Product> result = query.getResultList();
+        session.close();
+        return result;
+    }
+
+    @Override
     public void updateProduct(Product product) {
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
@@ -52,6 +62,40 @@ public class ProductDAOimpl implements IProductDAO {
             tx.commit();
         } catch (Exception e) {
             if(tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.save(product);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null){
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void deleteById(Product product) {
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.delete(product);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null){
                 tx.rollback();
             }
         } finally {

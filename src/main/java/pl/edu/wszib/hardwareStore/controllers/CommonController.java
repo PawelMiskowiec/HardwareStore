@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 @Controller
 @AllArgsConstructor
 public class CommonController {
-    IProductService productService;
+    private final IProductService productService;
 
     @Resource
     SessionObject sessionObject;

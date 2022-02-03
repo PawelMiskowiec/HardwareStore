@@ -19,4 +19,24 @@ public class ProductService implements IProductService {
         return productDAO.getProducts();
     }
 
+    @Override
+    public Optional<Product> getById(Long id){
+        return productDAO.getById(id);
+    }
+
+    @Override
+    public List<Product> getByCategory(String category) {
+        return productDAO.getByCategory(category);
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        productDAO.addProduct(product);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        productDAO.deleteById(productDAO.getById(id).get());
+    }
+
 }

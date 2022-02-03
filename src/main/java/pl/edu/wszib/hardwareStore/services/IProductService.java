@@ -7,4 +7,8 @@ import java.util.Optional;
 
 public interface IProductService {
     List<Product> getAllProducts();
+    Optional<Product> getById(Long id);
+    List<Product> getByCategory(String category);
+    void addProduct(Product product);
+    void deleteById(Long id);
 }
